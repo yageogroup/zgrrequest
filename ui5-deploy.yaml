@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
 specVersion: "4.0"
 metadata:
   name: zgrrequest
@@ -12,13 +14,13 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: YAGEOS4PCE_DEV
+          destination: YAGEO_DEV_040
           url: http://yas4erpdevhttp:44380
-          client: "100"
+          client: '040'
         app:
           name: ZGRREQUEST_REP
           description: GR Request V1
           package: Z001
-          transport: DEVK9A2CWN
+          transport: DEVK9A2DCY
         exclude:
           - /test/

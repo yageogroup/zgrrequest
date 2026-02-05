@@ -24,11 +24,7 @@ sap.ui.define([
                                                         id: "fileUploadButton",
                                                         text: "Upload",
                                                         press: function () {
-                                                                //     if (sap.ui.getCore().byId('idVendorInput').getValue() === '') {
-                                                                //     MessageToast.show("Please select a vendor number.");
-                                                                //         sap.ui.getCore().byId('idVendorInput').setValueState("Error");
-                                                                //         return;
-                                                                //      }
+                                                          
                                                                 if (sap.ui.getCore().byId('fileUploader').getValue() === '') {
                                                                         MessageToast.show("Please select a file first.");
                                                                         sap.ui.getCore().byId('fileUploader').setValueState("Error");
@@ -50,7 +46,7 @@ sap.ui.define([
                                                                                 // Call static rap action upload file
                                                                                 let sActionName = "com.sap.gateway.srvd.zsd_gr_request.v0001.uploadFile";
                                                                                 let parameters = [];
-                                                                                parameters.push({ name: "vendor_no", value: sap.ui.getCore().byId('idVendorInput').getValue() });
+                                                                                parameters.push({ name: "vendor_no", value: sap.ui.getCore().byId('idPoInput').getValue() });
                                                                                 parameters.push({ name: "file_name", value: sap.ui.getCore().byId('fileUploader').getValue() });
                                                                                 parameters.push({ name: "mime_type", value: sap.ui.getCore().byId('fileUploader').getMimeType()[0] });
                                                                                 parameters.push({ name: "file_content", value: sBase64 });
@@ -64,11 +60,11 @@ sap.ui.define([
                                                                                 };
                                                                                 this.editFlow.invokeAction(sActionName, mParameters).then(() => {
                                                                                         sap.m.MessageToast.show("File uploaded successfully");
-                                                                                        sap.ui.getCore().byId('idVendorInput').setValue('');
+                                                                                        sap.ui.getCore().byId('idPoInput').setValue('');
                                                                                         sap.ui.getCore().byId('fileUploader').clear();
                                                                                 }).catch((oError) => {
                                                                                         MessageBox.error(oError?.message);
-                                                                                        sap.ui.getCore().byId('idVendorInput').setValue('');
+                                                                                        sap.ui.getCore().byId('idPoInput').setValue('');
                                                                                         sap.ui.getCore().byId('fileUploader').clear();
                                                                                 });
                                                                         } catch (error) {
@@ -83,7 +79,7 @@ sap.ui.define([
                                                         id: "fileCloseButton",
                                                         text: "Close",
                                                         press: function () {
-                                                                sap.ui.getCore().byId('idVendorInput').setValue('');
+                                                                sap.ui.getCore().byId('idPoInput').setValue('');
                                                                 sap.ui.getCore().byId('fileUploader').clear();
                                                                 this.pDialog.close();
                                                         }.bind(this)
@@ -108,23 +104,23 @@ sap.ui.define([
                                                         width: "100%",
                                                         content: [
                                                                 new sap.m.Label({
-                                                                        text: "Vendor No.",
-                                                                        labelFor: "idVendorInput",
-                                                                        labelFor: "idVendorInput",
+                                                                        text: "Purchase order",
+                                                                        labelFor: "idPoInput",
+                                                                        labelFor: "idPoInput",
                                                                         required: false
                                                                 }),
                                                                 new sap.m.Input({
-                                                                        id: "idVendorInput",
-                                                                        placeholder: "Enter Vendor No.",
+                                                                        id: "idPoInput",
+                                                                        placeholder: "Enter PO No.",
                                                                         showSuggestion: true,
                                                                         showValueHelp: true,
                                                                         valueLiveUpdate: true,
                                                                         valueHelpOnly: true,
                                                                         suggestionItems: {
-                                                                                path: "/I_Supplier_VH",
+                                                                                path: "/I_PurchaseOrder",
                                                                                 template: new sap.ui.core.Item({
-                                                                                        key: "{Supplier}",
-                                                                                        text: "{Supplier} - {SupplierName}"
+                                                                                        key: "{PurchaseOrder}",
+                                                                                        text: "{Supplier} - {Supplier}"
                                                                                 })
                                                                         },
                                                                         liveChange: function (oEvent) {
@@ -133,14 +129,14 @@ sap.ui.define([
                                                                         valueHelpRequest: function (oEvent) {
                                                                                 if (!this._valueHelpDialog) {
                                                                                         this._valueHelpDialog = new sap.ui.comp.valuehelpdialog.ValueHelpDialog({
-                                                                                                title: "Select Vendor",
+                                                                                                title: "Select Purchase order",
                                                                                                 supportMultiselect: false,
                                                                                                 supportRanges: false,
-                                                                                                key: "Supplier",
-                                                                                                descriptionKey: "SupplierName",
+                                                                                                key: "PurchaseOrder",
+                                                                                                descriptionKey: "Purchase Order",
                                                                                                 ok: function (oEvent) {
                                                                                                         if (oEvent.getParameter("tokens").length) {
-                                                                                                                sap.ui.getCore().byId("idVendorInput").setValue(oEvent.getParameter("tokens")[0].getKey());
+                                                                                                                sap.ui.getCore().byId("idPoInput").setValue(oEvent.getParameter("tokens")[0].getKey());
                                                                                                                 this._valueHelpDialog.close();
                                                                                                         }
                                                                                                 }.bind(this),
@@ -157,33 +153,33 @@ sap.ui.define([
                                                                                                 if (oTable.bindRows) {
                                                                                                         // Desktop (sap.ui.table.Table)
                                                                                                         oTable.addColumn(new sap.ui.table.Column({
-                                                                                                                label: "Vendor",
-                                                                                                                template: new sap.m.Text({ text: "{Supplier}" })
+                                                                                                                label: "Purchase Order",
+                                                                                                                template: new sap.m.Text({ text: "{PurchaseOrder}" })
                                                                                                         }));
 
                                                                                                         oTable.addColumn(new sap.ui.table.Column({
-                                                                                                                label: "Vendor Name",
-                                                                                                                template: new sap.m.Text({ text: "{SupplierName}" })
+                                                                                                                label: "Vendor ",
+                                                                                                                template: new sap.m.Text({ text: "{Supplier}" })
                                                                                                         }));
 
-                                                                                                        oTable.bindRows("/I_Supplier_VH");
+                                                                                                        oTable.bindRows("/I_PurchaseOrder");
 
                                                                                                 } else {
                                                                                                         // Mobile (sap.m.Table)
                                                                                                         oTable.addColumn(new sap.m.Column({
-                                                                                                                header: new sap.m.Label({ text: "Vendor" })
+                                                                                                                header: new sap.m.Label({ text: "Purchase Order" })
                                                                                                         }));
 
                                                                                                         oTable.addColumn(new sap.m.Column({
-                                                                                                                header: new sap.m.Label({ text: "Vendor Name" })
+                                                                                                                header: new sap.m.Label({ text: "Supplier" })
                                                                                                         }));
 
                                                                                                         oTable.bindItems({
-                                                                                                                path: "/I_Supplier_VH",
+                                                                                                                path: "/I_PurchaseOrder",
                                                                                                                 template: new sap.m.ColumnListItem({
                                                                                                                         cells: [
-                                                                                                                                new sap.m.Text({ text: "{Supplier}" }),
-                                                                                                                                new sap.m.Text({ text: "{SupplierName}" })
+                                                                                                                                new sap.m.Text({ text: "{PurchaseOrder}" }),
+                                                                                                                                new sap.m.Text({ text: "{Supplier}" })
                                                                                                                         ]
                                                                                                                 })
                                                                                                         });
@@ -213,8 +209,8 @@ sap.ui.define([
 
                                                                                                                                 var oFilter = new sap.ui.model.Filter({
                                                                                                                                         filters: [
-                                                                                                                                                new sap.ui.model.Filter("Supplier", sap.ui.model.FilterOperator.Contains, sValue),
-                                                                                                                                                new sap.ui.model.Filter("SupplierName", sap.ui.model.FilterOperator.Contains, sValue)
+                                                                                                                                                new sap.ui.model.Filter("PurchaseOrder", sap.ui.model.FilterOperator.Contains, sValue),
+                                                                                                                                                new sap.ui.model.Filter("Supplier", sap.ui.model.FilterOperator.Contains, sValue)
                                                                                                                                         ],
                                                                                                                                         and: false
                                                                                                                                 });
