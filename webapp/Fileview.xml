@@ -1,0 +1,26 @@
+<mvc:View
+    controllerName="demo.controller.Pdf"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="pdfPage"
+        title="PDF Viewer"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+        >
+
+        <content>
+            <PDFViewer
+                id="pdfViewer"
+                width="100%"
+                height="100%"
+                source="{/pdfSource}"
+                showDownloadButton="true"
+                showPrintButton="true"              
+                />
+        </content>
+
+    </Page>
+
+</mvc:View>

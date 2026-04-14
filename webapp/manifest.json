@@ -108,6 +108,11 @@
           "name": "ZP_GR_REQUEST_HEAD__ItemObjectPage",
           "pattern": "ZP_GR_REQUEST_HEAD({key})/_Item({_ItemKey}):?query:",
           "target": "ZP_GR_REQUEST_HEAD__ItemObjectPage"
+        },
+        {
+          "pattern": "pdf",
+          "name": "PdfViewRoute",
+          "target": "PdfViewTarget"
         }
       ],
       "targets": {
@@ -159,6 +164,19 @@
                     "route": "ZP_GR_REQUEST_HEAD__ItemObjectPage"
                   }
                 }
+              },
+              "content": {
+                "header": {
+                  "actions": {
+                    "viewfile": {
+                      "press": "zgrrequest.ext.controller.viewfile.vfilefunc",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "View File"
+                    }
+                  }
+                }
               }
             }
           }
@@ -173,6 +191,13 @@
               "contextPath": "/ZP_GR_REQUEST_HEAD/_Item"
             }
           }
+        },
+        "PdfViewTarget": {
+          "type": "View",
+          "id": "PdfView",
+          "name": "Pdf",
+          "viewType": "XML",
+          "controlAggregation": "flexEnabled"
         }
       }
     }
