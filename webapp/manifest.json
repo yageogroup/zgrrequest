@@ -137,7 +137,7 @@
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": false,
-                      "text": "Upload"
+                      "text": "AI Extraction"
                     }
                   }
                 }
@@ -157,6 +157,18 @@
                 "_Item": {
                   "detail": {
                     "route": "ZP_GR_REQUEST_HEAD__ItemObjectPage"
+                  }
+                }
+              },
+              "content": {
+                "header": {
+                  "actions": {
+                    "viewfile": {
+                      "press": "zgrrequest.ext.controller.Viewfilehandler.viewfilehandler",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "View File"
+                    }
                   }
                 }
               }
