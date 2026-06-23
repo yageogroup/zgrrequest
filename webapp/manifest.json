@@ -88,8 +88,12 @@
         "uri": "i18n/i18n.properties"
       }
     },
-    "resources": {
-      "css": []
+      "resources": {
+        "css": [
+            {
+                "uri": "css/style.css"
+            }
+        ]
     },
     "routing": {
       "config": {},
@@ -129,7 +133,8 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                     "initiallyVisibleRowCount": 20
                   },
                   "actions": {
                     "upload": {

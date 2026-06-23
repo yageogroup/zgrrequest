@@ -20,6 +20,12 @@ sap.ui.define([
         "/sap/opu/odata4/sap/zui_gr_request/srvd/sap/zsd_gr_request/0001/" +
         "ZI_ZGR_FLDINFO";
 
+    // ============================================================
+    // FIELD HIGHLIGHTS — handled via CSS class gr-split-active
+    // Added to body on openSplit, removed on closeSplit
+    // All highlight rules are in webapp/css/style.css
+    // ============================================================
+
     // ── Fetch page count ─────────────────────────────────────────
     function fetchPageCount(sGrKey, fnCallback) {
         var sUrl = IMAGE_SERVICE +
@@ -449,6 +455,9 @@ sap.ui.define([
             .addEventListener("click", function () { closeSplit(oPage); });
 
         bSplitActive = true;
+
+        // ── Activate CSS highlights ──────────────────────────────
+        document.body.classList.add("gr-split-active");
     }
 
     // ============================================================
@@ -460,6 +469,9 @@ sap.ui.define([
         if (!oDomRef) { return; }
 
         var oParentDom = oDomRef.parentElement;
+
+        // ── Deactivate CSS highlights ─────────────────────────────
+        document.body.classList.remove("gr-split-active");
 
         // ── Remove injected elements first ───────────────────────
         var oSplitter = document.getElementById("splitterBar");

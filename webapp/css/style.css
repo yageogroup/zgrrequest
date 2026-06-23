@@ -1,0 +1,116 @@
+/* ============================================================
+   GR Request — Field Highlights
+   Only active when View File split is open (gr-split-active)
+   ============================================================ */
+
+/* ── Orange — Line Item fields ────────────────────────────── */
+
+body.gr-split-active .sapMLabel[title="Quantity in Unit of Measure from Delivery Note"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+
+body.gr-split-active .sapMLabel[title="Date of Manufacture"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+
+body.gr-split-active .sapMLabel[title="Shelf Life Expiration or Best-Before Date"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+
+body.gr-split-active .sapMLabel[title="Material Number"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+
+body.gr-split-active .sapMLabel[title="Supplier Material Description"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+body.gr-split-active .sapMLabel[title="Material Number Used by Supplier"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+body.gr-split-active .sapMLabel[title="Batch Number"] bdi {
+    background-color: rgba(255,140,0,0.20) !important;
+    border: 1.5px solid rgba(255,140,0,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #FF8C00 !important;
+    font-weight: bold !important;
+}
+/* Add more orange item fields below using title attribute */
+
+
+/* ── Blue — Header fields ─────────────────────────────────── */
+
+/* Purchase Order */
+body.gr-split-active [id$='PurchaseOrder::Label-bdi'] {
+    background-color: rgba(0,112,177,0.20) !important;
+    border: 1.5px solid rgba(0,112,177,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #0070b1 !important;
+    font-weight: bold !important;
+}
+
+/* Delivery Note */
+body.gr-split-active [id$='DataField::Lfsnr-label-bdi'] {
+    background-color: rgba(0,112,177,0.20) !important;
+    border: 1.5px solid rgba(0,112,177,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #0070b1 !important;
+    font-weight: bold !important;
+}
+
+/* Bill of Lading */
+body.gr-split-active [id$='DataField::Frbnr-label-bdi'] {
+    background-color: rgba(0,112,177,0.20) !important;
+    border: 1.5px solid rgba(0,112,177,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #0070b1 !important;
+    font-weight: bold !important;
+}
+
+/* Document Date */
+body.gr-split-active [id$='DataField::Bldat-label-bdi'] {
+    background-color: rgba(0,112,177,0.20) !important;
+    border: 1.5px solid rgba(0,112,177,0.85) !important;
+    border-radius: 2px !important;
+    padding: 0 3px !important;
+    color: #0070b1 !important;
+    font-weight: bold !important;
+}
+
+
+
+
+/* Add more blue header fields below using DataField::<fieldname>-label-bdi */
