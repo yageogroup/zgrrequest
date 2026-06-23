@@ -4,8 +4,8 @@
    ============================================================ */
 
 /* ── Orange — Line Item fields ────────────────────────────── */
-
-body.gr-split-active .sapMLabel[title="Quantity in Unit of Measure from Delivery Note"] bdi {
+ 
+body.gr-split-active .sapMLabel[title="Quantity of Goods Received for the Order Item in this period"] {
     background-color: rgba(255,140,0,0.20) !important;
     border: 1.5px solid rgba(255,140,0,0.85) !important;
     border-radius: 2px !important;

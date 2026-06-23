@@ -21,6 +21,6 @@ builder:
           name: ZGRREQUEST_REP
           description: GR Request V1
           package: Z001
-          transport: DEVK9A2GQM
+          transport: DEVK9A2GSD
         exclude:
           - /test/
