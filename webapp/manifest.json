@@ -1,0 +1,215 @@
+{
+	"_version": "1.60.0",
+	"sap.app": {
+		"id": "zgrrequest",
+		"type": "application",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			]
+		},
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:lrop",
+			"version": "1.20.0",
+			"toolsId": "a787ca66-5ebd-416e-afda-252fc3be0314"
+		},
+		"dataSources": {
+			"annotation": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation.xml",
+				"settings": {
+					"localUri": "annotations/annotation.xml"
+				}
+			},
+			"mainService": {
+				"uri": "/sap/opu/odata4/sap/zui_gr_request/srvd/sap/zsd_gr_request/0001/",
+				"type": "OData",
+				"settings": {
+					"annotations": [
+						"annotation"
+					],
+					"localUri": "localService/mainService/metadata.xml",
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.120.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.comp": {},
+				"sap.fe.templates": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "zgrrequest.i18n.i18n",
+					"supportedLocales": [
+						""
+					]
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"supportedLocales": [
+						""
+					]
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {},
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "ZP_GR_REQUEST_HEADList",
+					"target": "ZP_GR_REQUEST_HEADList"
+				},
+				{
+					"pattern": "ZP_GR_REQUEST_HEAD({key}):?query:",
+					"name": "ZP_GR_REQUEST_HEADObjectPage",
+					"target": "ZP_GR_REQUEST_HEADObjectPage"
+				},
+				{
+					"name": "ZP_GR_REQUEST_HEAD__ItemObjectPage",
+					"pattern": "ZP_GR_REQUEST_HEAD({key})/_Item({_ItemKey}):?query:",
+					"target": "ZP_GR_REQUEST_HEAD__ItemObjectPage"
+				}
+			],
+			"targets": {
+				"ZP_GR_REQUEST_HEADList": {
+					"type": "Component",
+					"id": "ZP_GR_REQUEST_HEADList",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"contextPath": "/ZP_GR_REQUEST_HEAD",
+							"variantManagement": "Page",
+							"navigation": {
+								"ZP_GR_REQUEST_HEAD": {
+									"detail": {
+										"route": "ZP_GR_REQUEST_HEADObjectPage"
+									}
+								}
+							},
+							"controlConfiguration": {
+								"@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "ResponsiveTable",
+										"initiallyVisibleRowCount": 20
+									},
+									"actions": {
+										"upload": {
+											"press": "zgrrequest.ext.controller.UploadFile.uploadHandler",
+											"visible": true,
+											"enabled": true,
+											"requiresSelection": false,
+											"text": "AI Extraction"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"ZP_GR_REQUEST_HEADObjectPage": {
+					"type": "Component",
+					"id": "ZP_GR_REQUEST_HEADObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"editableHeaderContent": false,
+							"contextPath": "/ZP_GR_REQUEST_HEAD",
+							"navigation": {
+								"_Item": {
+									"detail": {
+										"route": "ZP_GR_REQUEST_HEAD__ItemObjectPage"
+									}
+								}
+							},
+							"content": {
+								"header": {
+									"actions": {
+										"viewfile": {
+											"press": "zgrrequest.ext.controller.Viewfilehandler.viewfilehandler",
+											"visible": true,
+											"enabled": true,
+											"text": "View File"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"ZP_GR_REQUEST_HEAD__ItemObjectPage": {
+					"type": "Component",
+					"id": "ZP_GR_REQUEST_HEAD__ItemObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"navigation": {},
+							"contextPath": "/ZP_GR_REQUEST_HEAD/_Item"
+						}
+					}
+				}
+			}
+		},
+		"flexBundle": false
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	}
+}
