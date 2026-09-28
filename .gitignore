@@ -1,10 +1,9 @@
 node_modules/
 dist/
-.scp/
+mta_archives/
+*.mtar
+*.map
+Component-preload.js
+*-dbg.js
 .env
-Makefile*.mta
-mta_archives
-mta-*
-resources
-archive.zip
-.*_mta_build_tmp*.map
+default-env.json
