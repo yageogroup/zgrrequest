@@ -11,7 +11,7 @@ server:
         backend:
           - path: /sap
             url: http://yas4erpdevhttp:44380
-            client: "100"
+            client: '100'
             destination: YAGEOS4PCE_DEV
         ui5:
           path:
@@ -29,3 +29,8 @@ server:
       configuration:
         component: zgrrequest
         ui5Theme: sap_horizon
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
