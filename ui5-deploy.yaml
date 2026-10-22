@@ -16,13 +16,13 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: YAGEOS4PCE_DEV
+          destination: YAGEO_DEV_040
           url: http://yas4erpdevhttp:44380
-          client: '100'
+          client: '040'
         app:
           name: ZGRREQUEST_REP
           description: GR Request v2
           package: Z001
-          transport: DEVK9A2I43
+          transport: DEVK9A2IN3
         exclude:
           - /test/

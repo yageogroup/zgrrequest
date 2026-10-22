@@ -59,13 +59,25 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ListReport.ListReportController#zgrrequest::ZP_GR_REQUEST_HEADList": {
+            "controllerName": "zgrrequest.ext.controller.ListReportExt"
+          }
+        }
+      }
+    },
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ui.comp": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.ndc": {
+          "lazy": true
+        }
       }
     },
     "contentDensities": {
@@ -156,6 +168,13 @@
                       "enabled": true,
                       "requiresSelection": false,
                       "text": "AI Extraction"
+                    },
+                    "ManualPO": {
+                      "press": "zgrrequest.ext.controller.ManualPo.manualpo",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Scan"
                     }
                   }
                 }
@@ -183,9 +202,15 @@
                   "actions": {
                     "viewfile": {
                       "press": "zgrrequest.ext.controller.Viewfilehandler.viewfilehandler",
-                      "visible": true,
+                       "visible": "{= !${Manualpo} }",
                       "enabled": true,
                       "text": "View File"
+                    },
+                    "attachfile": {
+                      "press": "zgrrequest.ext.controller.AttachFile.attachFile",
+                        "visible": "{= !!${Manualpo} && !${IsActiveEntity} }",
+                      "enabled": true,
+                      "text": "Upload DN"
                     }
                   }
                 }
@@ -208,7 +233,7 @@
                       "press": "zgrrequest.ext.controller.BatchSplitHandler.BatchSplit",
                       "visible": true,
                       "enabled": true,
-                      "text": "Batch Split"
+                      "text": "Distribute Qty"
                     }
                   }
                 }
